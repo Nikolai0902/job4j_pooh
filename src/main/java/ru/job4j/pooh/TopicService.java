@@ -21,7 +21,7 @@ public class TopicService implements Service {
                 status = "200";
             }
         } else if ("POST".equals(req.httpRequestType())) {
-            ConcurrentHashMap<String, ConcurrentLinkedQueue<String>> hashMap = topics.get(req.getSourceName());
+            var hashMap = topics.get(req.getSourceName());
             if (hashMap != null) {
                 for (ConcurrentLinkedQueue<String> linkedQueue : hashMap.values()) {
                     linkedQueue.add(req.getParam());
