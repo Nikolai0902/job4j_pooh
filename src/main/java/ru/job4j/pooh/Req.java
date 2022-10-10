@@ -14,6 +14,11 @@ public class Req {
         this.param = param;
     }
 
+    /**
+     * Метод парсинга входящего запроса.
+     * @param content - входящая строка.
+     * @return - экземпляр класса Req, служит для парсинга входящего запроса.
+     */
     public static Req of(String content) {
         String[] result = new String[4];
         String[] stringsSplit = content.split(System.lineSeparator());
