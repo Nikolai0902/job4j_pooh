@@ -20,7 +20,7 @@ public class TopicService implements Service {
 
     @Override
     public Resp process(Req req) {
-        String status = "204";
+        String status = "501";
         String text = "";
         if ("GET".equals(req.httpRequestType())) {
             topics.putIfAbsent(req.getSourceName(), new ConcurrentHashMap<>());
@@ -28,6 +28,7 @@ public class TopicService implements Service {
             text = topics.get(req.getSourceName()).get(req.getParam()).poll();
             if (text == null) {
                 text = "";
+                status = "204";
             } else {
                 status = "200";
             }
